@@ -1,15 +1,19 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Create a Genre
+        Genre rap = new Genre("Rap", "A genre characterized by rhythmic speech.");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Create an Artist
+        Artist travisScott = new Artist("Rap", "A genre characterized by rhythmic speech.",
+                "Travis Scott", 32, "SICKO MODE", "Astroworld", 5000000);
+
+        // Test Polymorphism
+        rap.updateListeners(true); // Calls Genre's method
+        travisScott.updateListeners(true); // Calls Artist's overridden method
+
+        // Collaboration
+        Artist theWeeknd = new Artist("Pop", "A genre with catchy melodies.",
+                "The Weeknd", 33, "Blinding Lights", "After Hours", 7000000);
+        travisScott.collaborate(theWeeknd);
     }
 }
