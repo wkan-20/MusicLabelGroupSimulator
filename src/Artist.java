@@ -1,6 +1,3 @@
-public class Genre {
-}
-
 public class Artist extends Genre {
     private String name;
     private int age;
@@ -17,10 +14,10 @@ public class Artist extends Genre {
         this.song = song;
         this.bestAlbum = bestAlbum;
         this.monthlyListeners = monthlyListeners;
-        this.concert = false;
+        this.concert = false; // Default value
     }
 
-    // Getters and Setters for Artist-specific attributes
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -69,16 +66,37 @@ public class Artist extends Genre {
         this.concert = concert;
     }
 
-    // Override Polymorphic Method
+    // Polymorphic Method: Update Listeners
     @Override
     public void updateListeners(boolean concertOrBuzz) {
         if (concertOrBuzz) {
-            this.monthlyListeners += 50000; // Increase specific to Artist
+            this.monthlyListeners += 50000; // Increase listeners for Artist
         }
     }
 
     // Collaboration Method
     public void collaborate(Artist collaborator) {
         System.out.println(this.name + " is collaborating with " + collaborator.getName());
+    }
+
+    // Simulate Event Method
+    public void simulateEvent(String event) {
+        switch (event.toLowerCase()) {
+            case "concert":
+                this.concert = true;
+                this.monthlyListeners += 100000; // Boost listeners for a concert
+                System.out.println(this.name + " held a concert! Monthly listeners increased!");
+                break;
+            case "buzz":
+                this.monthlyListeners += 30000; // Smaller boost for general buzz
+                System.out.println(this.name + " generated buzz! Monthly listeners increased!");
+                break;
+            case "scandal":
+                this.monthlyListeners -= 20000; // Decrease listeners for a scandal
+                System.out.println(this.name + " faced a scandal. Monthly listeners decreased.");
+                break;
+            default:
+                System.out.println("Unknown event. No changes made.");
+        }
     }
 }
