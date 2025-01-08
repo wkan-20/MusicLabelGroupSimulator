@@ -7,10 +7,10 @@ public class Genre {
     public Genre(String genreName, String genreDescription) {
         this.genreName = genreName;
         this.genreDescription = genreDescription;
-        this.monthlyListeners = 0; // Initialize to 0 or any default value
+        this.monthlyListeners = 0; // Initialize to 0
     }
 
-    // Getters and Setters for genreName and genreDescription
+    // Getters and Setters
     public String getGenreName() {
         return genreName;
     }
@@ -27,7 +27,6 @@ public class Genre {
         this.genreDescription = genreDescription;
     }
 
-    // Getter and Setter for monthlyListeners
     public int getMonthlyListeners() {
         return monthlyListeners;
     }
@@ -36,13 +35,18 @@ public class Genre {
         this.monthlyListeners = monthlyListeners;
     }
 
-
-    // Method to update listeners
-    public void updateListeners(boolean concertOrBuzz) {
+    // Updates listeners
+    public void updateListeners(boolean concertOrBuzz, int additionalListeners) {
         if (concertOrBuzz) {
-            this.monthlyListeners += 10000; // Create coin flip to check 1/2 chance
-            System.out.println("There's a buzz!");
+            this.monthlyListeners += additionalListeners;
+            System.out.println("Listeners increased by " + additionalListeners);
+        } else {
+            this.monthlyListeners -= additionalListeners;
+            System.out.println("Listeners decreased by " + additionalListeners);
         }
     }
 
+    public void simulateEvent(String event) {
+        System.out.println("Simulating event for genre: " + genreName);
+    }
 }

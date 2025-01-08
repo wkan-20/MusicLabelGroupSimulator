@@ -68,9 +68,14 @@ public class Artist extends Genre {
 
     // Polymorphic Method: Update Listeners
     @Override
-    public void updateListeners(boolean concertOrBuzz) {
+    public void updateListeners(boolean concertOrBuzz, int additionalListeners) {
+        // Base listener increase
+        this.monthlyListeners += 10000;
+
+        // Add additional listeners if there's a buzz or concert
         if (concertOrBuzz) {
-            this.monthlyListeners += 50000; // Increase listeners for Artist
+            this.monthlyListeners += additionalListeners;
+            System.out.println(this.genreName + " generated buzz! Monthly listeners increased by " + additionalListeners);
         }
     }
 
@@ -98,5 +103,16 @@ public class Artist extends Genre {
             default:
                 System.out.println("Unknown event. No changes made.");
         }
+    }
+
+    // Custom Method: Print Artist Info
+    public void printArtistInfo() {
+        System.out.println("Artist Info:");
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Song: " + song);
+        System.out.println("Best Album: " + bestAlbum);
+        System.out.println("Monthly Listeners: " + monthlyListeners);
+        System.out.println("Concert: " + (concert ? "Yes" : "No"));
     }
 }
