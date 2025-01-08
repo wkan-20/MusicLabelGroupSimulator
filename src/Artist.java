@@ -67,23 +67,12 @@ public class Artist extends Genre {
     }
 
     // Polymorphic Method: Update Listeners
-    @Override
-    public void updateListeners(boolean concertOrBuzz, int additionalListeners) {
-        // Base listener increase
-        this.monthlyListeners += 10000;
+    // Updates listener method
+    public void updateListeners(int baselineGrowth) {
+        // Baseline growth when no event
+        this.monthlyListeners += baselineGrowth;
 
-        // Add additional listeners if there's a buzz or concert
-        if (concertOrBuzz) {
-            this.monthlyListeners += additionalListeners;
-            System.out.println(this.genreName + " generated buzz! Monthly listeners increased by " + additionalListeners);
-        }
     }
-
-    // Collaboration Method
-    public void collaborate(Artist collaborator) {
-        System.out.println(this.name + " is collaborating with " + collaborator.getName());
-    }
-
     // Simulate Event Method
     public void simulateEvent(String event) {
         switch (event.toLowerCase()) {

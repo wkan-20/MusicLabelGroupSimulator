@@ -14,15 +14,10 @@ public class Producer extends Genre {
     }
 
     // Updates listener method
-    public void updateListeners(boolean buzz, int baselineGrowth) {
+    public void updateListeners(int baselineGrowth) {
         // Baseline growth when no event
         this.monthlyListeners += baselineGrowth;
 
-        // If buzz is true, add bonus to listeners
-        if (buzz) {
-            this.monthlyListeners += 5000;  // Add boost for buzz
-            System.out.println(this.labelName + " gained extra listeners from buzz!");
-        }
     }
 
     // Method to simulate an event for the producer
