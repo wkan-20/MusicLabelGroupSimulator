@@ -44,16 +44,29 @@ public class Main {
         for (int month = 1; month <= 5; month++) {
             System.out.println("Month " + month);
 
-            // Randomly select an event for both the artist and the producer
-            String[] events = {"concert", "buzz", "scandal"};
+            String[] events = {"concert", "buzz", "scandal", "none"};
             String artistEvent = events[(int) (Math.random() * events.length)];
             String producerEvent = events[(int) (Math.random() * events.length)];
 
-            // Simulate the events for the artist and producer
+// Baseline growth for listeners
+            int baselineGrowth = 5000;  // Example baseline growth, you can adjust this value as needed
 
-            selectedArtist.simulateEvent(artistEvent);
-            selectedProducer.simulateEvent(producerEvent);
+// Simulate the events for the artist and producer
+            if (!artistEvent.equals("none")) {
+                selectedArtist.simulateEvent(artistEvent);  // concert, buzz, scandal
+            } else {
+                // No event, use baseline growth
+                selectedArtist.updateListeners(baselineGrowth);  // Use baseline growth for listeners
+                System.out.println("No event for " + selectedArtist.getName() + " this month. Baseline growth applied.");
+            }
 
+            if (!producerEvent.equals("none")) {
+                selectedProducer.simulateEvent(producerEvent);  // concert, buzz, scandal
+            } else {
+                // No event, use baseline growth
+                selectedProducer.updateListeners(baselineGrowth);  // Use baseline growth for listeners
+                System.out.println("No event for " + selectedProducer.getLabelName() + " this month.");
+            }
             // update listener count after the event
             System.out.println("Current monthly listeners for " + selectedArtist.getName() + ": " + selectedArtist.getMonthlyListeners());
             System.out.println("Current monthly listeners for producer " + selectedProducer.getLabelName() + ": " + selectedProducer.getMonthlyListeners());

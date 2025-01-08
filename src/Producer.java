@@ -16,7 +16,7 @@ public class Producer extends Genre {
     // Updates listener method
     public void updateListeners(int baselineGrowth) {
         // Baseline growth when no event
-        this.monthlyListeners += baselineGrowth;
+        this.monthlyListeners += baselineGrowth/2;
 
     }
 
